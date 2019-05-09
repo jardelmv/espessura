@@ -45,14 +45,7 @@ n.changes(a).on("change",function(e){e.seq>r.since&&!r.cancelled&&(r.since=e.seq
 
 </script>
 
-<!--<script src="xlsx.core.js"></script>-->
-
-
-	
-    <!--<script src="oee.js"></script>-->
-
-
-    
+   
   
     
     <!--<meta http-equiv="X-UA-Compatible" content=IE=edge">-->
@@ -215,6 +208,7 @@ n.changes(a).on("change",function(e){e.seq>r.since&&!r.cancelled&&(r.since=e.seq
                 <input id="couro" disabled class="form-control" style="font-size:35px; height:40px;"></input>            
                 <label>Partida</label>
                 <input id="carimbo" onkeyup="keyC()" class="form-control" style="font-size:50px; height:60px">                 
+	  	<input id="dbr" class="form-control" style="font-size:50px; height:60px">                 
             </div>
             <table id="table_esp"  class="table" style="width:10vw; height:90vh; margin-left:-15px; margin-top:-15px"></table>
         </div>
@@ -223,7 +217,7 @@ n.changes(a).on("change",function(e){e.seq>r.since&&!r.cancelled&&(r.since=e.seq
         </div>
     
     <div id="relatorio" class="col-xs-12" style="display:true; margin-top:15px">
-      <a href="/images/myw3schoolsimage.jpg" download>
+      
       <div class="col-xs-6" style="margin-bottom:5px"><button type="button" id="atualiza" class="btn btn-default btn-lg btn-block">Atualiza</button></div>
       <table class="table" id="lista">
           <tbody><tr id="firstline">
@@ -277,6 +271,13 @@ n.changes(a).on("change",function(e){e.seq>r.since&&!r.cancelled&&(r.since=e.seq
      var dbr = new PouchDB("http://sgodskred02" + "/" + dbrname, {skipSetup: true, ajax:{timeout:30000}}); 
       
    	$( document ).ready(function() {
+	
+	dbr.info().then(function (result) {
+          $("#dbr").val(result.doc_count);
+        }).catch(function (err) {
+          console.log(err);
+        });
+	
         createTableCouro();
         createView();
         
