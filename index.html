@@ -274,7 +274,7 @@ n.changes(a).on("change",function(e){e.seq>r.since&&!r.cancelled&&(r.since=e.seq
     }
 
      dbrname = "esp";
-     var dbr = new PouchDB(window.location.origin + "/" + dbrname, {skipSetup: true, ajax:{timeout:30000}}); 
+     var dbr = new PouchDB("http://sgodskred02" + "/" + dbrname, {skipSetup: true, ajax:{timeout:30000}}); 
       
    	$( document ).ready(function() {
         createTableCouro();
@@ -480,7 +480,7 @@ n.changes(a).on("change",function(e){e.seq>r.since&&!r.cancelled&&(r.since=e.seq
             
             appuser = user;
 			var ajaxOpts = {ajax: {timeout: 3000, headers: {Authorization: 'Basic ' + window.btoa(user.user + ':' + user.pass)}}};
-			dbr = new PouchDB(window.location.origin + "/" + dbrname, {skipSetup: true, ajax:{timeout:30000}});  
+			dbr = new PouchDB("http://sgodskred02" + "/" + dbrname, {skipSetup: true, ajax:{timeout:30000}});  
 			dbr.login(user.user, user.pass, ajaxOpts)
 			.then(function() {
                 $("#main").show();
