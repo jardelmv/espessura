@@ -267,11 +267,10 @@ n.changes(a).on("change",function(e){e.seq>r.since&&!r.cancelled&&(r.since=e.seq
                     }
     }
 
-     dbrname = "esp";
-     var dbr = new PouchDB("http://sgodskred02" + "/" + dbrname, {skipSetup: true, ajax:{timeout:30000}}); 
       
    	$( document ).ready(function() {
-	
+	dbrname = "esp";
+     	var dbr = new PouchDB("http://sgodskred02" + "/" + dbrname, {skipSetup: true, ajax:{timeout:30000}}); 
 	dbr.info().then(function (result) {
           $("#dbr").val(result.doc_count);
         }).catch(function (err) {
